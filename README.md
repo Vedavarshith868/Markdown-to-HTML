@@ -36,23 +36,29 @@ Here we are restricting the uploads to markdown files only. Then we created an u
 4. API endpoint and file handling
 
 ![image](https://github.com/user-attachments/assets/39431666-1081-42d2-be5a-6df078338dc6)
+
 This line defines endpoint at /upload, so when a client (like a web browser or another service) sends an HTTP POST request to http://<your-server>/upload, the server causes the upload_file function to run.
 
 ![image](https://github.com/user-attachments/assets/039c64b7-fcd6-4f81-b818-9f158b65ec82)
+
 The first if statement checks if the file is included in the data or not, then we assign the file to the variable named file. The second if statement checks if the file has a name, else it returns an error.
 
 5. File saving, caching using redis, convertion using custom function
 
 ![image](https://github.com/user-attachments/assets/4207a1b4-a8a9-4441-8284-139aaa532177)
+
 First it checks if file exists and has allowed extension (.md in this case). Then we secure the file and save it in uploads folder. We sanitize file name using secure_filename(file.filename) that we imported from werkzeug.utils.
 
 ![image](https://github.com/user-attachments/assets/ffd69b9b-fa17-4b52-992e-8b9ca676f544)
+
 Before processing, the code checks if the HTML conversion for this file is already cached in Redis. If it is, it returns the cached HTML directly.
 
 ![image](https://github.com/user-attachments/assets/0686fee8-6183-4c88-8455-ab7359e079aa)
+
 We use the custom function to convert markdown content into html.
 
 ![image](https://github.com/user-attachments/assets/80ac7487-a32e-48d9-81e1-3c7b138852e1)
+
 After conversion, the result is stored in redis for a time period that we can set.
 The HTML content is then returned as JSON response.
 
