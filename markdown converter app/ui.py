@@ -10,7 +10,7 @@ uploaded_file = st.file_uploader("Choose a Markdown file", type=["md"])
 
 if uploaded_file is not None:
     files = {"file": (uploaded_file.name, uploaded_file.getvalue())}
-    response = requests.post("http://127.0.0.1:5000/upload", files=files) #connecting line
+    response = requests.post("https://markdown-to-html-1.onrender.com", files=files) #connecting line
     
     if response.status_code == 200:
         html_content = response.json().get("html", "")
