@@ -73,10 +73,53 @@ The HTML content is then returned as JSON response.
 
 
 
+# Creating a basic web application
+This code is a web-based application built with Streamlit. It allows users to upload a markdown file, which is then sent to a local server for conversion into HTML. The app displays both the original markdown code and the generated HTML preview side by side.
 
 
+![image](https://github.com/user-attachments/assets/78ba805b-1dd4-4b51-b4f7-be74d08d32e9)
+
+I imported the necessary libraries streamlit and requests, of which streamlit is used to build web applications in python and requests simplifies making HTTP requests.
 
 
+![image](https://github.com/user-attachments/assets/16ec1424-62d5-4320-8db3-618ac809e0fe)
+
+st.set_page_config(...) -> this function sets up configuratyion for Streamlit app.
+Here we set the title of the browser and configure the layout to use the full width of page useful for displaying both the contents side-by-side.
+
+st.title(...) -> displays large header at the top of the app.
+st.markdown(...) -> Gives short description of the title and instructs user to upload a markdown file.
 
 
+![image](https://github.com/user-attachments/assets/e4741a9a-ed22-4181-8238-90eeaf3141d0)
 
+"uploaded_file" is a variable. It either holds the value **None** or containss the uploaded file's data.
+st.file_uploader(...) -> creates a file upload widget. 
+type=["md] -> restricts the file selection to files with .md extension.
+
+
+![image](https://github.com/user-attachments/assets/4d82a490-1873-46da-b22c-6bc1f88aaeaa)
+
+If the uploaded file in not **None**, it prepares the file for request and sends file to the server. 
+I created a dictionary named "files", that is structured to be compatible with requests.post mesthod. "file" is the key and the file datails like name and binary content are the values.
+
+requests.post(...) -> sends a HTTP POST request to the server at the mentioned URL, files = files assigns the fila data to the request ('files' variable we created). 'response' stores the server's response to the POST request. (basically the JSON result)
+
+
+![image](https://github.com/user-attachments/assets/20666984-21c6-40ad-9dba-3dba00896ac6)
+
+If server responds with a status code of 200, the request was successful. Then it extracts HTML content. 
+response.json() -> converts the response body from JSON into a python dictionary.
+.get("html", "") -> retrieves the value associated with the key "html". If the key does not exits then takes an empty string.
+
+
+![image](https://github.com/user-attachments/assets/aab7847b-32f1-4986-a904-2f6716915e9a)
+
+st.columns(2) -> creates 2 column layout. col1 and col2 represent left and right columns respectively. 
+
+col1 (left side) contains converted html code and col2 (right side) contains it's preview.
+
+
+![image](https://github.com/user-attachments/assets/9521ce44-d99a-45a3-acf6-5ec782ec20d0)
+
+The else block is exceuted if the server's response status is not 200.
