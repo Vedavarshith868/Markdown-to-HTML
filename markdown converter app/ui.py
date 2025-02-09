@@ -17,7 +17,7 @@ if uploaded_file is not None:
     if API_URL is None:
         st.error("API_URL is not set. Please configure environment variables.")
     else:
-        response = requests.post(f"{API_URL}/upload", files=files)
+        response = requests.post(f"{API_URL}", files=files)
     
         if response.status_code == 200:
             html_content = response.json().get("html", "")
