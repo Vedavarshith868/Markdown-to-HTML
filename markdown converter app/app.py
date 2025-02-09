@@ -10,16 +10,14 @@ from converter import convert_md_to_html
 app = Flask(__name__)
 
 #setting up Redis connection
-##redis_client = redis.StrictRedis(host='localhost', port=6379, db=0, decode_responses=True)
-REDIS_URL = os.getenv("REDIS_URL", "redis://default:ATGmAAIjcDFhOTcxYzEyMjg1NTI0ZjdjYjI0NjZlMzM3NTZlNDdiNXAxMA@talented-fawn-12710.upstash.io:6379")
-redis_client = redis.StrictRedis.from_url(REDIS_URL, decode_responses=True)
+redis_client = redis.StrictRedis(host='localhost', port=6379, db=0, decode_responses=True)
 
 #allowing only those files whose extension type is md
 ALLOWED_EXTENSIONS = {'md'}
 
 #creating uploads directory for storing uploaded files
 UPLOAD_FOLDER = 'uploads'
-os.makedirs(UPLOAD_FOLDER, exist_ok=True) 
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 #function that checks if uploaded file has allowed extension
