@@ -19,7 +19,7 @@ ALLOWED_EXTENSIONS = {'md'}
 
 #creating uploads directory for storing uploaded files
 UPLOAD_FOLDER = 'uploads'
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+os.makedirs(UPLOAD_FOLDER, exist_ok=True) 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 #function that checks if uploaded file has allowed extension
