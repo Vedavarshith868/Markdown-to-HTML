@@ -131,3 +131,8 @@ The else block is exceuted if the server's response status is not 200.
 This is the main function of converting the markdown file. I've used the markdown module to convert the user-uploaded markdown file to HTML content.
 
 The function "convert_md_to_html" takes a markdown **formatted** string as an input, and then the markdown() function is used to convert markdown text to HTML content, which is then inserted into a HTML template, to return a fully formatted HTML code.
+
+
+This is how it should look
+![image](https://github.com/user-attachments/assets/3ffed933-9c7e-457c-913b-e1bf81e53302)
+
