@@ -148,7 +148,29 @@ This is how it should look
    pip install -r main_requirements.txt
 
 ## 3. Setting up redis
+a. Run Powershell as administrator in your system
+b. Now enable WSL (windows Subsytem for Linux) through the command:
+ -> Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem_Linux
 
+c. Go to MS store from start or through command:
+ -> start ms-windows:
+
+d. Here Install a recent version of Ubuntu LTS, in my case I istalled "Ubuntu 24.04.1 LTS"
+
+e. Once installed, open that and enter your new UNIX user name and a new password and run the below commands sequentially:
+ -> sudo apt-add-repository ppa:redislabs/redis
+ -> sudo apt-get update
+ -> sudo apt-get install redis-server
+
+f. now to check if the installation is successful check the version using below command: 
+ -> redis-cli --version
+
+g. To check the status of the redis-server if it is running or not:
+ -> sudo service redis-server status
+
+or run:
+ -> redis-cli ping (it should return PONG)
+ 
 ## 4. Run the Flask backend
    python app.py
 
