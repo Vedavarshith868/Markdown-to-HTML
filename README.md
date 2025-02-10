@@ -26,7 +26,7 @@ convert_md_to_html from converter: A custom function (defined in converter.py) t
 
 ![image](https://github.com/user-attachments/assets/8be2bdb7-3bfd-4bdb-bbcc-a42029377cbc)
 
-It creates an instance of flask web application, then it connects to a Redis server running locally on the default port. The parameter decode_responses=True ensures that responses from Redis are returned as strings instead of bytes.
+It creates an instance of flask web application, then it connects to a Redis server running locally on the default port. The parameter decode_responses=True ensures that responses from Redis database are returned as strings instead of bytes.
 
 
 3. Configuring file uploads
@@ -57,7 +57,7 @@ First it checks if file exists and has allowed extension (.md in this case). The
 
 ![image](https://github.com/user-attachments/assets/ffd69b9b-fa17-4b52-992e-8b9ca676f544)
 
-Before processing, the code checks if the HTML conversion for this file is already cached in Redis. If it is, it returns the cached HTML directly.
+Before processing, the code checks if the HTML conversion for this file is already cached in Redis database. If it is, it returns the cached HTML directly.
 
 
 ![image](https://github.com/user-attachments/assets/0686fee8-6183-4c88-8455-ab7359e079aa)
@@ -67,7 +67,7 @@ It uses the custom function to convert markdown content into html.
 
 ![image](https://github.com/user-attachments/assets/80ac7487-a32e-48d9-81e1-3c7b138852e1)
 
-After conversion, the result is stored in redis for a time period that I can set.
+After conversion, the result is stored in redis database for a time period that I can set.
 The HTML content is then returned as JSON response.
 
 
@@ -123,3 +123,11 @@ col1 (left side) contains converted html code and col2 (right side) contains it'
 ![image](https://github.com/user-attachments/assets/9521ce44-d99a-45a3-acf6-5ec782ec20d0)
 
 The else block is exceuted if the server's response status is not 200.
+
+
+
+# converter.py
+
+This is the main function of converting the markdown file. I've used the markdown module to convert the user-uploaded markdown file to HTML content.
+
+The function "convert_md_to_html" takes a markdown **formatted** string as an input, and then the markdown() function is used to convert markdown text to HTML content, which is then inserted into a HTML template, to return a fully formatted HTML code.
