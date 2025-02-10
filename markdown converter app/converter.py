@@ -26,6 +26,6 @@ def convert_md_to_html(md_content):
     return html_content
 
 
-# Uncomment to test
+# to test
 # md_content = "This is a simple *Markdown* file. Markdown is a lightweight markup language that you can use to format text."
 # print(convert_md_to_html(md_content))
