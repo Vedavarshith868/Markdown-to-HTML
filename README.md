@@ -140,3 +140,17 @@ This is how it should look
 
 # Instructions to run the project
 
+## 1. Set up a virtual environment
+   python3 -m venv venv (creating)
+   venv\Scripts\activate (activating)
+
+## 2. Install required python packages
+   pip install -r main_requirements.txt
+
+## 3. Setting up redis
+
+## 4. Run the Flask backend
+   python app.py
+
+## 5. Run the streamlit frontend
+   streamlit run ui.py
