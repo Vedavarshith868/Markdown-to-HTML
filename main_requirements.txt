@@ -1,0 +1,5 @@
+Flask==2.0.3
+redis==3.5.3
+markdown==3.3.4
+streamlit==1.0.0
+requests==2.25.1
