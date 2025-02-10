@@ -73,7 +73,7 @@ The HTML content is then returned as JSON response.
 
 
 
-# Creating a basic web application
+# Creating a basic web application (not a part of task, I wanted to do it)
 This code is a web-based application built with Streamlit. It allows users to upload a markdown file, which is then sent to a local server for conversion into HTML. The app displays both the original markdown code and the generated HTML preview side by side.
 
 
@@ -135,4 +135,8 @@ The function "convert_md_to_html" takes a markdown **formatted** string as an in
 
 This is how it should look
 ![image](https://github.com/user-attachments/assets/3ffed933-9c7e-457c-913b-e1bf81e53302)
+
+
+
+# Instructions to run the project
 
